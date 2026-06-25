@@ -1,0 +1,30 @@
+import { Record } from '@servicenow/sdk/core';
+
+Record({
+    $id: Now.ID['chg0030045'],
+    $meta: { installMethod: 'demo' },
+    table: 'change_request',
+    data: {
+        number: 'CHG0030045',
+        short_description: 'Apply database patch + connection-pool config change to DocFlow-DB-01',
+        type: 'normal',
+        state: 3,
+        close_code: 'successful',
+        cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-db-01']),
+        start_date: '2025-06-09 23:00:00',
+        end_date: '2025-06-10 01:30:00',
+        work_start: '2025-06-09 23:05:00',
+        work_end: '2025-06-10 01:22:00',
+        opened_at: '2025-06-06 14:30:00',
+        closed_at: '2025-06-10 01:25:00',
+        description: 'Apply security patch PG-2025-0042 to PostgreSQL 14 on DocFlow-DB-01.\n\nAdditionally, reduce the connection-pool max-size from 200 to 120 connections as per capacity review CR-2025-087. The middleware layer (DocFlow-Middleware-01) will be restarted to pick up the new pool ceiling.\n\nMaintenance window: 23:00-01:30 UTC.\nExpected downtime: ~15 minutes during patch application.\nRollback: revert patch via pg_restore snapshot taken at 22:50.',
+        close_notes: 'Patch PG-2025-0042 applied successfully. Connection-pool max-size reduced to 120. Middleware restarted at 01:10 and confirmed healthy. No errors in logs post-change.',
+        risk: 3,
+        impact: 2,
+        urgency: 2,
+        priority: 3,
+        category: 'Software',
+        production_system: true,
+        active: false,
+    },
+});

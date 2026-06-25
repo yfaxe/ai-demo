@@ -1,0 +1,19 @@
+{
+    "name": "x-acf-doc-flow-demo-data",
+    "version": "1.0.0",
+    "description": "[BUILD AGENT GENERATED]:  Seeds demo data for Now Assist + AI Agents demo: CMDB CIs, change requests, and incidents for the DocFlow document lifecycle platform.",
+    "license": "UNLICENSED",
+    "imports": {
+        "#now:*": "./@types/servicenow/fluent/*/index.js"
+    },
+    "scripts": {
+        "build": "now-sdk build",
+        "deploy": "now-sdk install",
+        "transform": "now-sdk transform",
+        "types": "now-sdk dependencies"
+    },
+    "devDependencies": {
+        "@servicenow/sdk": "4.7.0-rc.7",
+        "@servicenow/glide": "27.0.5"
+    }
+}

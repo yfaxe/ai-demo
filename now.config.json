@@ -1,0 +1,6 @@
+{
+  "scope": "x_acf_docflow_demo",
+  "scopeId": "5bceb7ff2b21c710069cf829fe91bf74",
+  "name": "DocFlow Demo Data",
+  "tsconfigPath": "./src/server/tsconfig.json"
+}

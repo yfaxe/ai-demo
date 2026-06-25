@@ -1,0 +1,141 @@
+import { Record } from '@servicenow/sdk/core';
+
+// ─── Incident Demo Data ─────────────────────────────────────────────────────
+
+Record({
+  $id: Now.ID['inc0010001'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0010001',
+    short_description: 'DocFlow intermittent save failures and slow response on document submissions',
+    description: 'Multiple users reporting intermittent failures when saving documents in DocFlow. Some submissions hang for 30+ seconds before timing out. Issue appears to have started this morning. Affects both RT-Library and TechDoc-Library workflows.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 3,
+    urgency: 3,
+    incident_state: 2,
+    state: 2,
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 07:45:00',
+    contact_type: 'phone',
+    work_notes: '[Activity-5] Correlated with monitoring. CPU on middleware is normal but DB connection wait time spiked from 12ms to 3400ms at 07:30. Escalating to DBA team to investigate connection pool saturation post-CHG0030045.',
+  },
+});
+
+Record({
+  $id: Now.ID['inc0010002'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0010002',
+    short_description: 'CRITICAL: DocFlow Production completely unresponsive - all document operations failing',
+    description: 'Monitoring alert: DocFlow Production (APP-1B69) health-check returning HTTP 503 since 08:12. All document submission, retrieval, and archival operations are failing. ArchiveX Service also returning errors. Impact: all 340 concurrent users across Site-North (Toulouse) and Site-West (Bristol) unable to process documents.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 1,
+    urgency: 1,
+    incident_state: 1,
+    state: 1,
+    major_incident_state: 'proposed',
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 08:15:00',
+    contact_type: 'email',
+    work_notes: 'Auto-opened from monitoring alert DOCFLOW-PROD-HEALTH-001. HTTP 503 on /api/health endpoint. All dependent services (ArchiveX, RT-Library, TechDoc-Library) reporting cascading failures. Proposing Major Incident.',
+  },
+});
+
+Record({
+  $id: Now.ID['inc0009990'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0009990',
+    short_description: 'DocFlow document submission taking over 60 seconds - Site-North users',
+    description: 'Users at Site-North (Toulouse) reporting document submissions taking 60-90 seconds instead of the usual 2-3 seconds. Issue intermittent but worsening. Affects RT-Library uploads primarily.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 2,
+    urgency: 2,
+    incident_state: 2,
+    state: 2,
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 08:05:00',
+    contact_type: 'phone',
+    work_notes: 'User reports slow submissions since ~07:50. Checked network - no issues at Site-North. Appears to be application-side latency.',
+  },
+});
+
+Record({
+  $id: Now.ID['inc0009991'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0009991',
+    short_description: 'ArchiveX returning timeout errors on document archival requests',
+    description: 'ArchiveX Service returning HTTP 504 Gateway Timeout on archival requests. Documents stuck in pending-archive queue. Backlog growing. Started around 08:10.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 2,
+    urgency: 2,
+    incident_state: 2,
+    state: 2,
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 08:12:00',
+    contact_type: 'self-service',
+    work_notes: 'ArchiveX pod logs show connection refused errors to DocFlow-DB-01 on port 5432. Queue depth at 847 documents and rising.',
+  },
+});
+
+Record({
+  $id: Now.ID['inc0010003'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0010003',
+    short_description: 'Request: Grant "Create" permission on RT-Library for user M. Dupont',
+    description: 'Please grant Create permission on the RT-Library document library for user Marie Dupont (m.dupont@company.com), Engineering team. She needs to upload technical review documents as part of her new project assignment. Manager approval: Jean-Luc Bernard.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 3,
+    urgency: 3,
+    incident_state: 1,
+    state: 1,
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 09:30:00',
+    contact_type: 'self-service',
+  },
+});
+
+Record({
+  $id: Now.ID['inc0010004'],
+  $meta: { installMethod: 'demo' },
+  table: 'incident',
+  data: {
+    number: 'INC0010004',
+    short_description: 'REQUEST: BULK ADMIN rights for 6 external contractors across ALL document libraries',
+    description: 'Requesting FULL ADMIN permissions (Create, Read, Update, Delete, Manage Permissions, Bulk Export) on ALL document libraries (RT-Library, TechDoc-Library, and all sub-libraries) for 6 external contractors from Vendor: GlobalDoc Solutions Ltd.\n\nContractors:\n- ext.garcia@globaldoc.io\n- ext.kumar@globaldoc.io\n- ext.okonkwo@globaldoc.io\n- ext.petrov@globaldoc.io\n- ext.chen@globaldoc.io\n- ext.mueller@globaldoc.io\n\nRequired for: Document migration project. Duration: 6 months.\nNote: These are EXTERNAL contractor accounts (non-employees). Need access by end of week.',
+    category: 'software',
+    subcategory: 'internal application',
+    impact: 2,
+    urgency: 2,
+    incident_state: 1,
+    state: 1,
+    cmdb_ci: Now.ref('cmdb_ci', Now.ID['docflow-production-ci']),
+    caller_id: Now.ref('sys_user', '6816f79cc0a8016401c5a33be04be441'),
+    active: true,
+    opened_at: '2025-06-10 09:45:00',
+    contact_type: 'email',
+    work_notes: 'Auto-flagged: This request involves ADMIN-level permissions for EXTERNAL users across BROAD scope (all libraries). Requires security review per policy SEC-DOC-003.',
+  },
+});
