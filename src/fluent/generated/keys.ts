@@ -316,7 +316,221 @@ declare global {
                         table: 'sys_user'
                         id: '76e92ff63a72484199a138767698ee24'
                     }
+                    'stage2-problem-detection-agent': {
+                        table: 'sn_aia_agent'
+                        id: '63c9a1a299094c0fb83fc152e13611aa'
+                    }
+                    'stage2-problem-detection-agent-acl': {
+                        table: 'sys_security_acl'
+                        id: '89b3f564553f4dc6aa5daabcd3456424'
+                    }
+                    'stage3-l1-specialist-agent': {
+                        table: 'sn_aia_agent'
+                        id: '107fe179cb5c42c7a1fc97e0b715379c'
+                    }
+                    'stage3-l1-specialist-agent-acl': {
+                        table: 'sys_security_acl'
+                        id: '2b3bae0a467f4d909875cfdc59e1b457'
+                    }
                 }
+                composite: [
+                    {
+                        table: 'sn_aia_agent_config'
+                        id: '1a2dcbacaaa647bfa7cc5f9f63425c7b'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '23883bb55728457da338f24977eed0b6'
+                        key: {
+                            name: 'Create Problem'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '27a1edcc91aa4716b6a4754ddd9dd38e'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                            tool: '3afd7435636944a9bff730c4a905ca58'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '38b7e3517d204a4abd3bdfc71b3625cd'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                            tool: 'f6d65a12ff4c4f879145bfb73927ab82'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '3afd7435636944a9bff730c4a905ca58'
+                        key: {
+                            name: 'Get CI Dependencies'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_version'
+                        id: '3d6b5e7216da483eb43082240d887693'
+                        key: {
+                            target_id: '107fe179cb5c42c7a1fc97e0b715379c'
+                            version_name: 'V1'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '3ec28380bac440c1a87cdc675605f45f'
+                        key: {
+                            name: 'Get Incident Details'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '4614e142f2ce47bba13e349a93f6576e'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                            tool: 'd6e314d0685a48fda52b9697cf34138d'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '4e299f178da94a41be54487f3d33bd1c'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                            tool: '4f21e02143ac49eca6cc40cf61e64219'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '4f21e02143ac49eca6cc40cf61e64219'
+                        key: {
+                            name: 'Escalate to Human Approver'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '569f0fb49a9a40e59a3c41e7799e6cd3'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                            tool: '675e28bbebc34e7d9cd04e6151bb0c29'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_version'
+                        id: '5c7d3915001042cc864277be29d44517'
+                        key: {
+                            target_id: '63c9a1a299094c0fb83fc152e13611aa'
+                            version_name: 'V1'
+                        }
+                    },
+                    {
+                        table: 'sys_agent_access_role_configuration'
+                        id: '60fc64bf3424497898768d90b600fed3'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '675e28bbebc34e7d9cd04e6151bb0c29'
+                        key: {
+                            name: 'Find Recurring DocFlow Incidents'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: '72ff5dfd2a144b20a26b05318fa5b66f'
+                        key: {
+                            name: 'Grant Access and Resolve'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: '7798b4e16c2a480d9cfcf14fb834ec46'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                            tool: '72ff5dfd2a144b20a26b05318fa5b66f'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: '946f404e60074734bb48f425475d90e3'
+                        key: {
+                            sys_security_acl: '89b3f564553f4dc6aa5daabcd3456424'
+                            sys_user_role: '2831a114c611228501d4ea6c309d626d'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'a40b8e1f30ec4164a8077868ba4374ac'
+                        key: {
+                            sys_security_acl: '2b3bae0a467f4d909875cfdc59e1b457'
+                            sys_user_role: '282bf1fac6112285017366cb5f867469'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: 'a71f372cda744e598434bec5dc70bad0'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                            tool: '23883bb55728457da338f24977eed0b6'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_config'
+                        id: 'b72ffd6608e2464e9f128c72445d8113'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_agent_tool_m2m'
+                        id: 'b81dcb139c2a46059d62cb510568f482'
+                        key: {
+                            agent: '107fe179cb5c42c7a1fc97e0b715379c'
+                            tool: '3ec28380bac440c1a87cdc675605f45f'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'bfb20987219c47f4b7d630f77126a33c'
+                        key: {
+                            sys_security_acl: '2b3bae0a467f4d909875cfdc59e1b457'
+                            sys_user_role: '2831a114c611228501d4ea6c309d626d'
+                        }
+                    },
+                    {
+                        table: 'sys_agent_access_role_configuration'
+                        id: 'c0009f194d4141baaab67ff074283eb7'
+                        key: {
+                            agent: '63c9a1a299094c0fb83fc152e13611aa'
+                        }
+                    },
+                    {
+                        table: 'sys_security_acl_role'
+                        id: 'c61109e811a14d61a5e6d5a52e3fce7e'
+                        key: {
+                            sys_security_acl: '89b3f564553f4dc6aa5daabcd3456424'
+                            sys_user_role: '282bf1fac6112285017366cb5f867469'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: 'd6e314d0685a48fda52b9697cf34138d'
+                        key: {
+                            name: 'Find Recent Changes on CI'
+                        }
+                    },
+                    {
+                        table: 'sn_aia_tool'
+                        id: 'f6d65a12ff4c4f879145bfb73927ab82'
+                        key: {
+                            name: 'Assess Access Request Risk'
+                        }
+                    },
+                ]
             }
         }
     }
